@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Scrollytelling</title>
+    <style>
+      /* --- Reset & Base Styles --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: #000;
+      }
+
+      /* --- typography --- */
+      h1 {
+        font-size: 3.75rem; /* ~text-6xl */
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+      }
+
+      h2 {
+        font-size: 2.25rem; /* ~text-4xl */
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      p.lead {
+        font-size: 1.25rem; /* ~text-xl */
+      }
+
+      p.body {
+        font-size: 1.125rem; /* ~text-lg */
+        line-height: 1.75;
+      }
+
+      .text-center { text-align: center; }
+      .text-white { color: #fff; }
+      .drop-shadow { text-shadow: 0 4px 6px rgba(0,0,0,0.5); }
+      .text-balance { text-wrap: balance; }
+
+      /* --- Layout: The Stacked Grid --- */
+      .stack-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      .layer {
+        /* This stacks the layers on top of each other */
+        grid-area: 1 / 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* --- Background Layer --- */
+      .background-layer {
+        z-index: 1;
+      }
+
+      .bg-image {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .bg-spacer {
+        /* These empty spacers allow the foreground 'solid' sections 
+          to scroll past without dragging the sticky image with them immediately */
+        height: 100vh;
+        background: #000; /* Color doesn't matter, it's covered by foreground */
+      }
+
+      /* --- Foreground Layer --- */
+      .foreground-layer {
+        z-index: 2;
+      }
+
+      /* Helper for flexible centering */
+      .section-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      /* Transparent sections allow the background layer to be seen */
+      .section-transparent {
+        min-height: 100vh;
+        /* No background color here! */
+      }
+
+      /* Solid sections cover the background layer */
+      .section-solid {
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .content-box {
+        max-width: 48rem; /* ~3xl */
+        padding: 0 1.5rem;
+      }
+
+      /* --- Section Colors --- */
+      .bg-slate { background-color: #0f172a; } /* slate-900 */
+      .text-slate-light { color: #cbd5e1; }   /* slate-300 */
+
+      .bg-blue { background-color: #1e3a8a; }   /* blue-900 */
+      .text-blue-light { color: #dbeafe; }     /* blue-100 */
+
+      .bg-green { background-color: #14532d; }  /* green-900 */
+      .text-green-light { color: #dcfce7; }    /* green-100 */
+
+      .bg-final { height: 50vh; }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="stack-container">
+      
+      <div class="layer background-layer">
+        <div class="bg-image" style="background-image: url('https://placehold.co/1920x1080/8a75bf/dad7e0?text=mountain');"></div>
+        <div class="bg-image" style="background-image: url('https://placehold.co/1920x1080/91b2c4/f5f5f5?text=ocean');"></div>
+        <div class="bg-spacer"></div>
+        <div class="bg-image" style="background-image: url('https://placehold.co/1920x1080/0a6121/8f826b?text=forest');"></div>
+        <div class="bg-spacer"></div>
+        <div class="bg-image" style="background-image: url('https://placehold.co/1920x1080/black/black?text=...');"></div>
+      </div>
+
+      <div class="layer foreground-layer">
+
+        <section class="section-transparent section-center">
+          <div class="text-center text-white drop-shadow">
+            <h1 class="text-balance">Mountain Views</h1>
+            <p class="lead">Scroll to explore different landscapes</p>
+          </div>
+        </section>
+
+        <section class="section-solid section-center bg-slate text-white">
+          <div class="content-box text-center">
+            <h2 class="text-balance">Discover Nature's Beauty</h2>
+            <p class="body text-slate-light">
+              Experience breathtaking landscapes from around the world. Each section reveals a new vista, creating an
+              immersive journey through stunning natural environments.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-transparent section-center">
+          <div class="text-center text-white drop-shadow">
+            <h1 class="text-balance">Ocean Depths</h1>
+            <p class="lead">Dive into the blue</p>
+          </div>
+        </section>
+
+        <section class="section-solid section-center bg-blue text-white">
+          <div class="content-box text-center">
+            <h2 class="text-balance">The Call of the Sea</h2>
+            <p class="body text-blue-light">
+              Vast oceans cover our planet, hiding mysteries beneath their waves. The rhythmic motion of water creates a
+              sense of peace and endless possibility.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-transparent section-center">
+          <div class="text-center text-white drop-shadow">
+            <h1 class="text-balance">Forest Serenity</h1>
+            <p class="lead">Find peace among the trees</p>
+          </div>
+        </section>
+
+        <section class="section-solid section-center bg-green text-white">
+          <div class="content-box text-center">
+            <h2 class="text-balance">Into the Woods</h2>
+            <p class="body text-green-light">
+              Ancient forests stand as guardians of biodiversity, offering shelter and sustenance to countless species
+              while purifying the air we breathe.
+            </p>
+          </div>
+        </section>
+
+        <section class="section-transparent section-center bg-final">
+          <div class="text-center text-white drop-shadow">
+            <p class="lead text-balance">The journey continues...</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </body>
+</html>
